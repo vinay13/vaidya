@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from jet.dashboard.dashboard_modules import google_analytics_views
+
+
 
 urlpatterns = [
+    url(r'^jet/',include('jet.urls','jet')),
+    url(r'^jet/dashboard/',include('jet.dashboard.urls','jet-dashboard')),
     url(r'^admin/', admin.site.urls),
+    url(r'^',include('category.urls')),
+    url(r'^',include('survey.urls')),
+    url(r'^',include('complaints.urls')),
+    url(r'^',include('suggestions.urls')),
+    url(r'^',include('appreciations.urls')),
+
 ]
+
+
+admin.site.site_header = 'Vaidya - hospital quality management system'

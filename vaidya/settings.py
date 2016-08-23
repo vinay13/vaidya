@@ -27,10 +27,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+"""
+send_mail('Subject holla here', 'Here is the message.', 'vxixnxaxy@gmail.com', ['pythonistvinay@gmail.com'], fail_silently=False)
+
+from django.core.mail import send_mail
+send_mail('Subject here', 'Here is the message.', 'pythonistvinay@gmail.com', ['balar.tushar1@gmail.com'], fail_silently=False)
+
+"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pythonistvinay@gmail.com'
+EMAIL_HOST_PASSWORD = 'omglol123#'
+EMAIL_PORT = 587
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'category',
+    'survey',
+    'complaints',
+    'suggestions',
+    'appreciations',
+    'base',
     'rest_framework',
 ]
 
@@ -101,6 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
 
 
 # Internationalization
